@@ -3,34 +3,35 @@ name: Deploy to Azure App Service
 on:
   push:
     branches:
-      - main 
-  jobs:
-        deploy:
-          runs-on: ubuntu-latest
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
       
-          steps:
-            - name: Login to Azure
-             uses: Azure/login@v1
-             with:
-              creds: ${{ secrets.AZURE_CLIENT_SECRET }}
+    steps:
+      - name: Login to Azure
+        uses: Azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CLIENT_SECRET }}
              
-            - name: Checkout Code
-              uses: actions/checkout@v2
+      - name: Checkout Code
+        uses: actions/checkout@v2
       
-            - name: Set up Node.js
-              uses: actions/setup-node@v2
-              with:
-                node-version: 14
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
       
-            - name: Install Dependencies
-              run: npm install  # Or use yarn if your project uses yarn
+      - name: Install Dependencies
+        run: npm install  # Or use yarn if your project uses yarn
       
-            - name: Build Application
-              run: npm run build  # Adjust this command for your project
+      - name: Build Application
+        run: npm run build  # Adjust this command for your project
       
-            - name: Deploy to Azure App Service
-              uses: azure/webapps-deploy@v2
-              with:
-                app-name: ${{ secrets.AZURE_APP_NAME }}
-                slot-name: production
-                publish-profile: ${{ secrets.AZURE_APP_PUBLISH_PROFILE }}
+      - name: Deploy to Azure App Service
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ secrets.AZURE_APP_NAME }}
+          slot-name: production
+          publish-profile: ${{ secrets.AZURE_APP_PUBLISH_PROFILE }}
