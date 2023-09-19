@@ -2,13 +2,10 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
 name: Build and deploy Node.js app to Azure Web App - shal57-webapp-todolist
-
 on:
   push:
     branches:
       - master  # Change this to your main branch name
-      name: Deploy to Azure App Service
-           
       jobs:
         deploy:
           runs-on: ubuntu-latest
