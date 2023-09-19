@@ -22,7 +22,7 @@ function TodoList() {
       <h1>Todo List</h1>
       <input
         type="text"
-        placeholder="Add a new task..."
+        placeholder="Add a new task for the day..."
         value={newTodo}
         onChange={(e) => setNewTodo(e.target.value)}
       />
