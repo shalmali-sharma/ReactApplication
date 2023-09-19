@@ -8,12 +8,7 @@ on:
     branches:
       - master  # Change this to your main branch name
       name: Deploy to Azure App Service
-
-      on:
-        push:
-          branches:
-            - master  # Change this to your main branch name
-      
+           
       jobs:
         deploy:
           runs-on: ubuntu-latest
